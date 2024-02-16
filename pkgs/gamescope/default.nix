@@ -20,7 +20,7 @@ gamescope'.overrideAttrs(old: rec {
   mesonFlags = old.mesonFlags ++ ["-Davif_screenshots=disabled"];
 
   # Build with vendored OpenVR for now, pending https://github.com/NixOS/nixpkgs/pull/275372
-  buildInputs = builtins.filter (p: p.pname != "openvr") old.buildInputs;
+  buildInputs = builtins.filter (p: (p.pname or p.name) != "openvr") old.buildInputs;
   # Needed to build vendored OpenVR
   nativeBuildInputs = old.nativeBuildInputs ++ [ cmake ];
 })
