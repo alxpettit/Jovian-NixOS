@@ -27,7 +27,7 @@ rec {
     cmake = final.cmake;
   };
   gamescope-wsi = gamescope.override {
-    enableExecutable = false;
+    # enableExecutable = false;
     enableWsi = true;
   };
   gamescope-session = final.callPackage ./pkgs/gamescope-session { };
