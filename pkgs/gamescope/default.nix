@@ -17,7 +17,7 @@ gamescope'.overrideAttrs(old: rec {
     hash = "sha256-lJt6JVolorQdrhumkW9yjyItxqpw6ZtEUbkjNqzHfb8=";
   };
 
-  mesonFlags = old.mesonFlags ++ ["-Davif_screenshots=disabled"];
+  mesonFlags = (old.mesonFlags or []) ++ ["-Davif_screenshots=disabled"];
 
   # Build with vendored OpenVR for now, pending https://github.com/NixOS/nixpkgs/pull/275372
   buildInputs = builtins.filter (p: (p.pname or p.name) != "openvr") old.buildInputs;
